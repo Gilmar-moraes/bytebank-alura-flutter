@@ -1,33 +1,70 @@
 import 'package:flutter/material.dart';
 
-void main() =>
-    runApp(MaterialApp(
+void main() => runApp(ByteBankApp());
+
+class ByteBankApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
       home: Scaffold(
-        body: ListaTransferencia(),
-        appBar: AppBar(title: Text('Transferências'),),
-        floatingActionButton: FloatingActionButton(
-          onPressed: () {},
-          child: Icon(Icons.add),
-        ),
+        body: FormularioTransferencia(),
       ),
-    ));
+    );
+  }
+}
+
+class FormularioTransferencia extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    return Scaffold(
+      appBar: AppBar(
+        title:
+          Text('Criando Transferência'),
+      ),
+      body: Column(
+        children: <Widget>[
+          TextField(
+            style: TextStyle(
+              fontSize: 16.0
+            ),
+            decoration: InputDecoration(
+              labelText: 'Número da Conta',
+              hintText: '0000'
+            ),
+          ),
+          TextField(),
+          ElevatedButton(onPressed: (){}, child: Text("k")),
+        ],
+      ),
+    );
+  }
+}
 
 class ListaTransferencia extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-    return Column(
-      children: <Widget>[
-        ItemTransferencia(Transferencia(100.0, 1000)),
-        ItemTransferencia(Transferencia(200.0, 3002)),
-        ItemTransferencia(Transferencia(300.0, 3000)),
-      ],
+    return Scaffold(
+      body: Column(
+        children: <Widget>[
+          ItemTransferencia(Transferencia(100.0, 1000)),
+          ItemTransferencia(Transferencia(200.0, 3002)),
+          ItemTransferencia(Transferencia(300.0, 3000)),
+        ],
+      ),
+      appBar: AppBar(
+        title: Text('Transferências'),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {},
+        child: Icon(Icons.add),
+      ),
     );
   }
 }
 
 class ItemTransferencia extends StatelessWidget {
-
   final Transferencia _transferencia;
 
   ItemTransferencia(this._transferencia);
